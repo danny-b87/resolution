@@ -90,6 +90,9 @@ background-color: lightgray;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
 }
+div.col-sm-5{
+  size: 50px;
+}
 main {
 	min-height: 500px;
 	padding: 50px 0;

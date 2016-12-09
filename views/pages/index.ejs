@@ -1,41 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charst="UTF-8">
-        <title>My Resolution</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-            <link rel="stylesheet" type="text/css" href="/css/styles.css"></link>
-        </head>
-        <body>
-            <header>
-                <nav class="navbar navbar-inverse">
-                    <a href="/" class="navbar-brand">R3solution</a>
-                    <ul class="navbar navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
+<%- contentFor('hero') %>
+<section class="hero">
+    <div class="hero-content">
+        <h2> Welcome to R3solution</h2>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec dui magna."</p>
+        <a href="/" class="hvr-buzz btn btn-lg btn-primary">Getting started</a>
+        <a href="/contact" class="hvr-buzz btn btn-lg btn-primary">Contact</a>
+    </div>
+</section>
+<%-contentFor('body') %>
+<div class="jumbotron text-center">
+//email
+  <div id="container">
+<div></div>
+Node.JS Email application
+<div>
+<h1>Mailer In Node.JS</h1>
+<input id="to" type="text" placeholder="Enter E-mail ID where you want to send" />
+<input id="subject" type="text" placeholder="Write Subject" />
+<textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
+<button id="send_email">Send Email</button>
+<span id="message"></span>
+</div>
+<script>
+$(document).ready(function(){
+    var from,to,subject,text;
+    $("#send_email").click(function(){      
+        to=$("#to").val();
+        subject=$("#subject").val();
+        text=$("#content").val();
+        $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("
 
-            <section class="hero">
-                <div class="hero-content">
-                    <h2> Welcome to R3solution</h2>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec dui magna."</p>
-                    <a href="/" class="hvr-buzz btn btn-lg btn-primary">Getting started</a>
-                    <a href="/contact" class="hvr-buzz btn btn-lg btn-primary">Contact</a>
-                </div>
-            </section>
-            <main>
-            <div class="container">
-                <div class="jumbotron text-center">
-                    Homepage
-                </div>
-            </div>
-            </main>
+Email is been sent at "+to+" . Please check inbox !
 
-            <footer>
-            	R3solution. copyright &copy; 2016
-            </footer>
-    </body>
-</html>
+");
+        }
+
+});
+    });
+});
+</script>
+
+</div>  
